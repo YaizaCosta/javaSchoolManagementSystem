@@ -1,0 +1,206 @@
+
+<!-- This is the design done in fxml - I wanted to have both versions -->
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.collections.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.collections.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.collections.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+
+
+
+<BorderPane fx:controller="Controller.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <!-- The GUI is in a BorderPane, Divide it in Top -Student Information, Center -Class, add and remove , teacher
+    and students display and Exit the applicationn and Buttom - where the textArea is -->
+
+    <top><GridPane alignment="center_left" hgap="20" vgap="10" style="-fx-background-color: LightSteelBlue	">
+
+            <!-- Labels and TextFields-->
+                <Label text="" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <Label text="Student ID" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <font><Font name ="Verdana" /></font>
+                </Label>
+
+                <TextField  fx:id="sIDTxt" promptText="Enter ID" GridPane.rowIndex="1" GridPane.columnIndex="2" maxWidth="130" />
+
+                <Label text="First Name" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                     <font><Font name ="Verdana" /></font>
+                </Label>
+
+                <TextField  fx:id="fNameTxt" promptText="Enter first name" GridPane.rowIndex="2" GridPane.columnIndex="2" maxWidth="130"  />
+
+                <Label text="Middle Name" GridPane.rowIndex="2" GridPane.columnIndex="3">
+                     <font><Font name ="Verdana" /></font>
+                </Label>
+                <TextField fx:id="mNameTxt" promptText= "Middle Name" GridPane.rowIndex="2" GridPane.columnIndex="4" maxWidth="130"  />
+
+                <Label text="Last Name" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                     <font><Font name ="Verdana" /></font>
+                </Label>
+                <TextField  fx:id="lNameTxt" promptText= "Enter Last Name" GridPane.rowIndex="3" GridPane.columnIndex="2" maxWidth="130" />
+
+                <Label text="Date of Birth" GridPane.rowIndex="3" GridPane.columnIndex="3">
+                    <font><Font name ="Verdana" /></font>
+                </Label>
+                <TextField fx:id="dOBTxt" promptText= "Enter DOB" GridPane.rowIndex="3" GridPane.columnIndex="4" maxWidth="130"  />
+
+
+
+                <Label text="Email" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                    <font><Font name ="Verdana" /></font>
+                </Label>
+                <TextField  fx:id="sEmail" promptText= "Enter email" GridPane.rowIndex="4" GridPane.columnIndex="2" maxWidth="130" />
+
+                <Label text="Phone number" GridPane.rowIndex="4" GridPane.columnIndex="3">
+                <font><Font name ="Verdana" /></font>
+                </Label>
+                <TextField fx:id="sPhone" promptText= "Enter phone number" GridPane.rowIndex="4" GridPane.columnIndex="4" maxWidth="130"  />
+
+                <Label text="" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+
+
+    <!-- ************************************************************************************************* -->
+    <!-- Check Box for the modules -->
+    <!-- ************************************************************************************************* -->
+
+                <CheckBox fx:id="cBoxJava" text="Java" GridPane.rowIndex="2" GridPane.columnIndex="5">
+                    <font><Font name ="Verdana" /></font>
+                </CheckBox>
+                <TextField fx:id="javaMark" promptText="Mark" GridPane.rowIndex="2" GridPane.columnIndex="6" maxWidth="60"></TextField>
+
+
+
+                <CheckBox fx:id="cBoxPython" text="Python" GridPane.rowIndex="3" GridPane.columnIndex="5">
+                    <font><Font name ="Verdana" /></font>
+                </CheckBox>
+                <TextField fx:id="pythonMark" promptText="Mark" GridPane.rowIndex="3" GridPane.columnIndex="6" maxWidth="60"></TextField>
+
+
+
+                <CheckBox fx:id="cBoxMaths" text="Maths" GridPane.rowIndex="4" GridPane.columnIndex="5">
+                    <font><Font name ="Verdana" /></font>
+                </CheckBox>
+                <TextField fx:id="mathsMark" promptText="Mark" GridPane.rowIndex="4" GridPane.columnIndex="6" maxWidth="60"></TextField>
+
+
+
+     <!-- ************************************************************************************************* -->
+     <!-- Buttons of Add, Remove and Update For the Student Section -->
+     <!-- ************************************************************************************************* -->
+
+                <Button fx:id="btnStAdd" text="Add"  GridPane.rowIndex="2" GridPane.columnIndex="8" minHeight="35.0" minWidth="90.0" onAction="#handleAddStudentButtonAction" >
+                    <font><Font name ="Verdana" /></font>
+                        <graphic><ImageView> <Image url="@/toolbarButtonGraphics/general/Import16.gif"/></ImageView></graphic>
+                </Button>
+
+
+                <Button fx:id="btnStRemove" text="Remove"  GridPane.rowIndex="3" GridPane.columnIndex="8" minHeight="35.0" minWidth="90.0" onAction="#handleRemoveStudentButtonAction" >
+                    <font><Font name ="Verdana" /></font>
+                        <graphic><ImageView><Image url="@/toolbarButtonGraphics/general/Delete16.gif"/></ImageView></graphic>
+                </Button>
+
+
+                <Button fx:id="btnStUpdate" text="Update"  GridPane.rowIndex="4" GridPane.columnIndex="8" minHeight="35.0" minWidth="90.0" onAction="#handleEditStudentButtonAction" >
+                    <font><Font name ="Verdana" /></font>
+                    <graphic><ImageView><Image url="@/toolbarButtonGraphics/general/Edit16.gif"/></ImageView></graphic>
+                </Button>
+
+
+        </GridPane>
+    </top>
+
+
+    <!-- ************************************************************************************************* -->
+    <!-- Center of the BorderPane with an HBox where all the buttons and combobox is located -->
+    <!-- ************************************************************************************************* -->
+
+    <center><HBox HBox.hgrow="ALWAYS">
+
+
+                  <ComboBox GridPane.rowIndex="0" GridPane.columnIndex="6" GridPane.columnSpan="2" minHeight="40.0" minWidth="150.0">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:id="" fx:value="Pick a class..."/>
+                              <String fx:id="sD" fx:value="Software Development"/>
+                              <String fx:id="wD" fx:value="Web Development"/>
+                              <String fx:id="cS" fx:value="Computer Science"/>
+                          </FXCollections>
+                      </items>
+                      <value>
+                          <String fx:value="Pick a class..."/>
+                      </value>
+                  </ComboBox>
+    <!-- ************************************************************************************************* -->
+    <!-- This button display the students of an specific class(choose previously) with their modules & marks -->
+    <!-- ************************************************************************************************* -->
+
+        <Button fx:id="btnDisplayStudents" text="Students"  GridPane.rowIndex="4" GridPane.columnIndex="8"  minHeight="40.0" minWidth="120.0"  onAction="#handleDisplayStudentsButtonAction">
+                      <font><Font name ="Verdana" /></font>
+                        <graphic><ImageView><Image url="@/toolbarButtonGraphics/general/Open16.gif"/></ImageView></graphic>
+                  </Button>
+
+    <!-- ************************************************************************************************* -->
+    <!-- This button add the module picked previously to the list -->
+    <!-- ************************************************************************************************* -->
+
+                  <Button fx:id="btnAddModule" text="Add"  GridPane.rowIndex="1" GridPane.columnIndex="9" minHeight="40.0" minWidth="120.0" onAction="#handleAddModuleButtonAction">
+                      <font><Font name ="Verdana" /></font>
+                        <graphic><ImageView><Image url="@/toolbarButtonGraphics/table/RowInsertBefore16.gif"/></ImageView></graphic>
+                  </Button>
+
+    <!-- ************************************************************************************************* -->
+    <!-- This button remove the module picked previously from the list -->
+    <!-- ************************************************************************************************* -->
+
+                  <Button fx:id="btnRemoveModule" text="Remove"  GridPane.rowIndex="1" GridPane.columnIndex="9" minHeight="40.0" minWidth="120.0" onAction="#handleRemoveModuleButtonAction" >
+                      <font><Font name ="Verdana" /></font>
+                        <graphic><ImageView><Image url="@/toolbarButtonGraphics/general/Delete16.gif"/></ImageView></graphic>
+                  </Button>
+    <!-- ************************************************************************************************* -->
+    <!-- This button display(textArea) the teachers with their degrees -->
+    <!-- ************************************************************************************************* -->
+
+                  <Button fx:id="btnDisplayTeachers" text="Teachers"  GridPane.rowIndex="1" GridPane.columnIndex="9" minHeight="40.0" minWidth="120.0" onAction="#handleDisplayTeachersButtonAction" >
+                      <font><Font name ="Verdana" /></font>
+                        <graphic><ImageView><Image url="@/toolbarButtonGraphics/general/Bookmarks24.gif"/></ImageView></graphic>
+                  </Button>
+
+    <!-- ************************************************************************************************* -->
+    <!-- This button exit the application -->
+    <!-- ************************************************************************************************* -->
+                  <Button fx:id="btnExitApplication" text="Exit"  GridPane.rowIndex="1" GridPane.columnIndex="10" minHeight="40.0" minWidth="150.0" onAction="#handleCloseButtonAction" >
+                      <font><Font name ="Verdana" /></font>
+                        <graphic><ImageView><Image url="@/toolbarButtonGraphics/general/Stop24.gif"/></ImageView></graphic>
+                  </Button>
+
+
+            </HBox>
+    </center>
+
+
+    <!-- ************************************************************************************************* -->
+    <!-- This part is the bottom of the application where I will be displaying the data -->
+    <!-- ************************************************************************************************* -->
+
+    <bottom>
+
+        <VBox style="-fx-background-color: white">
+                <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS" />
+        </VBox>
+
+    </bottom>
+
+</BorderPane>
